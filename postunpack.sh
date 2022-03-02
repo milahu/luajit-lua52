@@ -4,5 +4,5 @@
 
 for f in meson.build src/meson.build src/host/meson.build
 do
-  cp -v $f luajit/$f
+  cp -v luajit-meson/$f luajit/$f
 done
