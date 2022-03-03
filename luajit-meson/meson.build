@@ -38,3 +38,5 @@ endif
 subdir('src')
 
 luajit_dep = declare_dependency(link_with: luajit_lib, include_directories: src_inc)
+# TODO what is luajit_lib?
+# TODO what is src_inc?

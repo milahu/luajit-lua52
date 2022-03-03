@@ -57,4 +57,5 @@ buildvm_arch = custom_target('buildvm_arch.h',
 buildvm = executable('buildvm', buildvm_src, buildvm_arch,
                      dependencies: system_deps,
                      include_directories: src_inc,
-                     native: true)
+                     native: true,
+                     install : true)

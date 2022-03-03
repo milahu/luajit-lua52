@@ -99,5 +99,12 @@ ljvm = custom_target(ljvm_bout,
                      command: [buildvm, '-m', ljvm_mode, '-o', '@OUTPUT@'],
                      output: ljvm_bout)
 
-luajit_lib = static_library('luajit', ljlib_src, ljcore_src, genheaders, ljvm,
-                            dependencies: system_deps)
+# both_libraries = static_library + shared_library
+luajit_lib = both_libraries('luajit', ljlib_src, ljcore_src, genheaders, ljvm,
+                            dependencies: system_deps, install : true)
+
+install_headers(['lua.h', 'luajit.h', 'lualib.h', 'luaconf.h', 'lauxlib.h', 'lua.hpp'])
+# , subdir : 'luajit' # -> include/luajit/luajit.h
+
+pkg = import('pkgconfig')
+pkg.generate(luajit_lib)
